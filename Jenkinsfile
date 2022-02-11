@@ -17,7 +17,7 @@ pipeline {
 		stage('Install') {
             steps { 
 			ws("/conf-docker/frontend-resa/my-frontend-resa/frontend-content") {
-					echo 'npm install may takes too much time ..."
+					echo 'npm install may takes too much time ...'
 					sh ('npm --version')
 				}
 			}
@@ -25,7 +25,7 @@ pipeline {
 		stage('Build') {
 			steps {
 			   ws("/conf-docker/frontend-resa/my-frontend-resa/frontend-content"){
-					echo 'npm run build may takes too much time ..."
+					echo 'npm run build may takes too much time ...'
 					sh ('node --version') 
 				}
 			}
