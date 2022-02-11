@@ -1,0 +1,34 @@
+<form #formResa="ngForm" *ngIf="selectedSessionId != 'none' && customerId != null">
+    <fieldset class="c-fieldset">
+        <legend class="c-legend">reservation</legend>
+        <bsu-my-fg-label label="customer">
+            <span class="enEvidence">{{customer?.username}}</span> [{{customerId}}]
+        </bsu-my-fg-label> 
+        <bsu-my-fg-label label="session">
+            <span class="enEvidence">{{session?.title}} {{session?.date}} {{session?.startTime}}</span> [{{selectedSessionId}}] 
+        </bsu-my-fg-label>
+        <bsu-my-fg-label label="nbPlaces">
+            <input type="text" class="form-control" required
+                   name="nbPlaces" [(ngModel)]="reservation.nbPlaces" /> 
+        </bsu-my-fg-label> 
+        <bsu-my-fg-label label="action">
+            <input  type="button" class="btn bg-primary text-white" 
+                    [disabled]="!formResa.form.valid" value="make reservation" 
+                    (click)="onResa()" /> 
+        </bsu-my-fg-label> 
+    </fieldset>
+</form>
+<hr/>
+<span [ngClass]="lastStatusClasses()">{{message}}</span> <br/>
+<a routerLink="/ngr-sessions" *ngIf="selectedSessionId=='none'">sessions</a> &nbsp;
+<a routerLink="/ngr-customer">customer login/logout</a> <br/>
+
+<hr/>
+<h2>liste des reservations</h2>
+<table border="1">
+    <tr><th>idResa</th><th>nbPlaces</th><th>reservation datetime</th><th>session</th></tr>
+    <tr *ngFor="let r of listeReservations">
+        <td>{{r.id}}</td><td>{{r.nbPlaces}}</td>
+        <td>{{r.datetime}}</td><td>{{sessionDetails(r.session)}} ({{r.session}}) </td>
+    </tr>
+</table>

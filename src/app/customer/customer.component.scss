@@ -1,0 +1,23 @@
+.selected { color : blue; font-weight : bold;}
+.c-fieldset {
+    padding: 0.2em;
+    margin: 0.2em;
+    border-width: 2px;
+    border-style: solid;
+    border-color: black;
+  }
+  
+  .c-legend {
+    width: inherit;
+    /* Or auto */
+    padding: 0 10px;
+    /* To give a bit of padding on the left and right */
+    border-bottom: none;
+  }
+
+  .form-control {
+    height: 1.65rem;
+  }
+
+  .success { color : green;}
+  .failure { color : red;}
