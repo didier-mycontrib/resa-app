@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Hello') {
             steps {
-                echo 'Hello from resa-app'
+                echo 'resa-app with dist/resa-app already built in this V1'
             }
 		}
 		stage('Checkout code') {
@@ -17,14 +17,16 @@ pipeline {
 		stage('Install') {
             steps { 
 			ws("/conf-docker/frontend-resa/my-frontend-resa/frontend-content") {
-					sh ('npm install')
+					echo 'npm install may takes too much time ..."
+					sh ('npm --version')
 				}
 			}
         }
 		stage('Build') {
 			steps {
 			   ws("/conf-docker/frontend-resa/my-frontend-resa/frontend-content"){
-					sh ('npm run build') 
+					echo 'npm run build may takes too much time ..."
+					sh ('node --version') 
 				}
 			}
 		}
