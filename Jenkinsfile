@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Hello') {
             steps {
-                echo 'resa-app with dist/resa-app already built in this V1'
+                echo 'resa-app with dist/resa-app already built in this V1 '
             }
 		}
 		stage('Checkout code') {
