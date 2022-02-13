@@ -32,8 +32,10 @@ pipeline {
 		}
 		stage('copy resa-app from ./resa-app/dist to ./frontends-content') {
 			steps {
+			    echo 'rsync -av --delete ./resa-app/dist/resa-app ./frontends-content OK but rsync not found'
 			    ws("/conf-docker/frontends-angular/my-frontends") {
-				     sh('rsync -av --delete ./resa-app/dist/resa-app ./frontends-content')
+				     sh('rm -r ./frontends-content/resa-app')
+				     sh('cp -r ./resa-app/dist/resa-app ./frontends-content')
 				}
 			}
 		}
