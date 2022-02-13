@@ -33,7 +33,7 @@ pipeline {
 		stage('copy resa-app from ./resa-app/dist to ./frontends-content') {
 			steps {
 			    ws("/conf-docker/frontends-angular/my-frontends") {
-				     sh('cp -r ./resa-app/dist/resa-app ./frontends-content')
+				     sh('rsync -av --delete ./resa-app/dist/resa-app ./frontends-content')
 				}
 			}
 		}
