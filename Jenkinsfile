@@ -9,14 +9,14 @@ pipeline {
 		}
 		stage('Checkout code') {
 			steps {
-			   ws("/conf-docker/frontend-resa/my-frontend-resa/frontend-content") {
+			   ws("/conf-docker/frontends-angular/my-frontends/resa-app") {
 				  checkout scm
 			   }
 			}
 		}
 		stage('Install') {
             steps { 
-			ws("/conf-docker/frontend-resa/my-frontend-resa/frontend-content") {
+			ws("/conf-docker/frontends-angular/my-frontends/resa-app") {
 					echo 'npm install may takes too much time ...'
 					sh ('npm --version')
 				}
@@ -24,16 +24,16 @@ pipeline {
         }
 		stage('Build') {
 			steps {
-			   ws("/conf-docker/frontend-resa/my-frontend-resa/frontend-content"){
+			   ws("/conf-docker/frontends-angular/my-frontends/resa-app"){
 					echo 'npm run build may takes too much time ...'
 					sh ('node --version') 
 				}
 			}
 		}
-		stage('recompose docker container') {
+		stage('copy resa-app from ./resa-app/dist to ./frontends-content') {
 			steps {
-			    ws("/conf-docker/frontend-resa") {
-				     sh('date > lastUpdate.txt')
+			    ws("/conf-docker/frontends-angular/my-frontends") {
+				     sh('cp -r ./resa-app/dist/resa-app ./frontends-content')
 				}
 			}
 		}
